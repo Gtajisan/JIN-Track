@@ -21,7 +21,7 @@ Ye='\033[1;33m'
 Blu='\033[1;34m'
 Mage='\033[1;35m'
 Cy='\033[1;36m'
-Wh='\033[1;37m'
+Wh='\033[0;31m'
 
 #BANNER TOOLS
 os.system('clear')
