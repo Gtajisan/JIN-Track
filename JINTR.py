@@ -53,10 +53,10 @@ if input_user == '1': #OPSI 1
     time.sleep(1)
     stderr.writelines(f"""{Wh}
      .-.
-   .'   `.         {Wh}--------------------------------
-   :0  0:          {Wh}| {Gr}JIN - TRACKER - IP ADDRESS {Wh}|
-   : @@  `.        {Wh}| {Gr}@CODE BY FARHAN-MUH-TASIM  {Wh}|
-  :         ``.    {Wh}--------------------------------
+   .'   `.      {Wh}-----------------------------------
+   :0  0:       {Wh}|{Gr}JIN-TRACKER -IP - ADDRESS{Wh}|
+   : @@  `.     {Wh}|{Gr}@CODE BY FARHA-MUH -TASIM{Wh}|
+  :         ``. {Wh}-----------------------------------
  :             `.
 :  :         .   `.
 :   :          ` . `.
@@ -115,10 +115,10 @@ elif input_user == '3': #OPSI 2
     time.sleep(1)
     stderr.writelines(f"""{Wh}
      .-.
-   .'   `.          {Wh}----------------------------------
+   .'   `.          {Wh}----------------------------------------
    :g g   :         {Wh}| {Gr}JIN - TRACKER - PHONE NUMBER {Wh}|
    : o    `.        {Wh}| {Gr}@CODE BY FARHAN-MUH-TASIM    {Wh}|
-  :         ``.     {Wh}----------------------------------
+  :         ``.     {Wh}----------------------------------------
  :             `.
 :  :         .   `.
 :   :          ` . `.
@@ -175,10 +175,10 @@ elif input_user == '2': #OPSI 3
     time.sleep(1)
     stderr.writelines(f"""{Wh}
      .-.
-   .'   `.          {Wh}----------------------------------
+   .'   `.          {Wh}----------------------------------------
    :g g   :         {Wh}|  {Gr}JIN - SHOW YOUR IP ADDRESS  {Wh}|
    : @    `.        {Wh}|  {Gr}@CODE BY FARHAN-MUH-TASIM   {Wh}|
-  :         ``.     {Wh}----------------------------------
+  :         ``.     {Wh}----------------------------------------
  :             `.
 :  :         .   `.
 :   :          ` . `.
@@ -209,10 +209,10 @@ elif input_user == '4':
     time.sleep(1)
     stderr.writelines(f"""{Wh}
      .-.
-   .'   `.          {Wh}----------------------------------
+   .'   `.          {Wh}----------------------------------------
    :O O :           {Wh}|    {Gr}JIN - TRACKER USERNAME    {Wh}|
    : o    `.        {Wh}|    {Gr}@CODE BY FARHAN-MUH-TASIM {Wh}|
-  :         ``.     {Wh}----------------------------------
+  :         ``.     {Wh}----------------------------------------
  :             `.
 :  :         .   `.
 :   :          ` . `.
@@ -267,7 +267,7 @@ elif input_user == '4':
         for site, url in results.items():
             print(f" {Wh}[ {Gr}+ {Wh}] {site} : {Gr}{url}")
     except KeyboardInterrupt:
-        print(f" {Wh}[{Ye}!{Wh}] {Ye}PROGRAM STOPPED...")
+        print(f" {Wh}[{Ye}!{Wh}] {Ye}PROGRAM STOPPED-😑 create by FARHAN-MUH-TASIM...")
 
 elif input_user == '0':
     print(f"\n  {Wh}[{Ye}!{Wh}] {Ye}THANK'S FOR USING TOOL Create BY FARHAN-MUH-TASIM{Ye}JIN-TRACK !")
