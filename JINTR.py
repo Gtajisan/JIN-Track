@@ -27,17 +27,16 @@ Wh='\033[1;37m'
 os.system('clear')
 stderr.writelines(f"""{Gr}
 
-   ___ _____ _   _      ___________  ___  _____  _   __ ___________ 
-  |_  |_   _| \ | |    |_   _| ___ \/ _ \/  __ \| | / /|  ___| ___ \
-    | | | | |  \| |______| | | |_/ / /_\ \ /  \/| |/ / | |__ | |_/ /
-    | | | | | . ` |______| | |    /|  _  | |    |    \ |  __||    / 
-/\__/ /_| |_| |\  |      | | | |\ \| | | | \__/\| |\  \| |___| |\ \ 
-\____/ \___/\_| \_/      \_/ \_| \_\_| |_/\____/\_| \_/\____/\_| \_|
+               ___  __        __       
+   | | |\ | __  |  |__)  /\  /  ` |__/ 
+\__/ | | \|     |  |  \ /~~\ \__, |  \ 
+                                       
+
                                                                     
                                                                     
 
 
-          {Wh}[ + ]  C O D E   B Y  FARHAN-MUH-TASIM  [ + ]  
+    {Wh}[ + ]  C O D E   B Y  FARHAN-MUH-TASIM  [ + ]  
         
     {Wh}[ 1 ] {Gr}IP Tracker
     {Wh}[ 2 ] {Gr}Show Your IP
@@ -54,10 +53,10 @@ if input_user == '1': #OPSI 1
     time.sleep(1)
     stderr.writelines(f"""{Wh}
      .-.
-   .'   `.          {Wh}--------------------------------
-   :0  0:         {Wh}| {Gr}JIN - TRACKER - IP ADDRESS {Wh}|
-   : @@  `.        {Wh}|       {Gr}@CODE BY FARHAN-MUH-TASIM      {Wh}|
-  :         ``.     {Wh}--------------------------------
+   .'   `.         {Wh}--------------------------------
+   :0  0:          {Wh}| {Gr}JIN - TRACKER - IP ADDRESS {Wh}|
+   : @@  `.        {Wh}| {Gr}@CODE BY FARHAN-MUH-TASIM  {Wh}|
+  :         ``.    {Wh}--------------------------------
  :             `.
 :  :         .   `.
 :   :          ` . `.
@@ -118,7 +117,7 @@ elif input_user == '3': #OPSI 2
      .-.
    .'   `.          {Wh}----------------------------------
    :g g   :         {Wh}| {Gr}JIN - TRACKER - PHONE NUMBER {Wh}|
-   : o    `.        {Wh}|        {Gr}@CODE BY FARHAN-MUH-TASIM       {Wh}|
+   : o    `.        {Wh}| {Gr}@CODE BY FARHAN-MUH-TASIM    {Wh}|
   :         ``.     {Wh}----------------------------------
  :             `.
 :  :         .   `.
@@ -178,7 +177,7 @@ elif input_user == '2': #OPSI 3
      .-.
    .'   `.          {Wh}----------------------------------
    :g g   :         {Wh}|  {Gr}JIN - SHOW YOUR IP ADDRESS  {Wh}|
-   : @    `.        {Wh}|        {Gr}@CODE BY FARHAN-MUH-TASIM       {Wh}|
+   : @    `.        {Wh}|  {Gr}@CODE BY FARHAN-MUH-TASIM   {Wh}|
   :         ``.     {Wh}----------------------------------
  :             `.
 :  :         .   `.
@@ -211,8 +210,8 @@ elif input_user == '4':
     stderr.writelines(f"""{Wh}
      .-.
    .'   `.          {Wh}----------------------------------
-   :O O :         {Wh}|    {Gr}JIN - TRACKER USERNAME    {Wh}|
-   : o    `.        {Wh}|        {Gr}@CODE BY FARHAN-MUH-TASIM       {Wh}|
+   :O O :           {Wh}|    {Gr}JIN - TRACKER USERNAME    {Wh}|
+   : o    `.        {Wh}|    {Gr}@CODE BY FARHAN-MUH-TASIM {Wh}|
   :         ``.     {Wh}----------------------------------
  :             `.
 :  :         .   `.
