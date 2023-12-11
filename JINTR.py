@@ -16,12 +16,12 @@ from sys import stderr
 
 Bl='\033[30m' # VARIABLE BUAT WARNA CUYY
 Re='\033[1;31m'
-Gr='\033[1;32m'
+Gr='\033[0;33m'
 Ye='\033[1;33m'
 Blu='\033[1;34m'
 Mage='\033[1;35m'
 Cy='\033[1;36m'
-Wh='\033[0;31m'
+Wh='\033[0;37m'
 
 #BANNER TOOLS
 os.system('clear')
