@@ -29,29 +29,32 @@ python3 JINTR.py
 ```
 rm -rf JIN-Track
 ```
+you're own ip ```own Tracker```
+<img src="https://i.postimg.cc/K8V1PrZG/Screenshot-20231211-181153-Termux.png " />
+ 
 
 Display on the menu ```IP Tracker```
 
-<img src="https://github.com/HunxByts/JIN-Track/blob/main/asset/ip.png " />
+<img src="https://i.postimg.cc/Y9BjVrGT/Screenshot-20231211-181130-Termux.png " />
 
 on the IP Track menu, you can combo with the seeker tool to get the target IP
 <details>
 <summary>:zap: Install Seeker :</summary>
-- <strong><a href="https://github.com/thewhiteh4t/seeker">Get Seeker</a></strong>
+- <strong><a href="https://i.postimg.cc/fWG5KFvF/Screenshot-20231211-182246-Termux.png">Get Seeker</a></strong>
 </details>
 
 Display on the menu ```Phone Tracker```
 
-<img src="https://github.com/HunxByts/JIN-Track/blob/main/asset/phone.png" />
+<img src="https://i.postimg.cc/Y9BjVrGT/Screenshot-20231211-181130-Termux.png" />
 
 on this menu you can search for information from the target phone number
 
 Display on the menu ```Username Tracker```
 
-<img src="https://github.com/HunxByts/JIN-Track/blob/main/asset/User.png"/>
+<img src="https://i.postimg.cc/280b6NMB/Screenshot-20231211-181220-Termux.png"/>
 on this menu you can search for information from the target username on social media
 
 <details>
 <summary>:zap: Author :</summary>
-- <strong><a href="https://github.com/HunxByts">HunxByts</a></strong>
+- <strong><a href="https://github.com/Gtajisan">HunxByts</a></strong>
 </details>
