@@ -25,6 +25,11 @@ cd JIN-Track
 pip3 install -r requirements.txt
 python3 JINTR.py
 ```
+### run command 
+```
+cd JIN-Track && python3 JINTR.py
+```
+
 ### install
 ```
 rm -rf JIN-Track
