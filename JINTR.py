@@ -1,10 +1,11 @@
 #!/usr/bin/python
-# << CODE BY HUNX04
+# << CODE BASED BY HUNX04
+# << MADE BY FARHAN
 # << WANT TO RECODE??? PERMISSION FIRST, AT LEAST TAG MIMIN'S GITHUB ACCOUNT THAT LEADS TO THIS ACCOUNT, IT'S EASIER TO USE FORK
 # << IF THE ABOVE IS NOT FOLLOWED THEN YOU WILL GET SIN BECAUSE MIMIN IS NOT SINCERE
-# “O you who believe! "Do not consume each other's wealth in a false way," (QS. An Nisaa': 29). Rasulullah SAW also prohibited his people from taking other people's rights without permission.
-#IMPORT MODULE
+# "O you who believe! Do not consume each other's wealth in a false way," (QS. An Nisaa': 29). Rasulullah SAW also prohibited his people from taking other people's rights without permission.
 
+# IMPORT MODULES
 import json
 import requests
 import time
@@ -12,220 +13,258 @@ import os
 import phonenumbers
 from phonenumbers import carrier, geocoder, timezone
 from sys import stderr
+import sys
+import socket
+import re
 
+# COLOR VARIABLES
+class Colors:
+    BLACK = '\033[30m'
+    RED = '\033[1;31m'
+    GREEN = '\033[1;32m'
+    YELLOW = '\033[1;33m'
+    BLUE = '\033[1;34m'
+    MAGENTA = '\033[1;35m'
+    CYAN = '\033[1;36m'
+    WHITE = '\033[0;37m'
+    RESET = '\033[0m'
 
-Bl='\033[30m' # VARIABLE BUAT WARNA CUYY
-Re='\033[1;31m'
-Gr='\033[0;33m'
-Ye='\033[1;33m'
-Blu='\033[1;34m'
-Mage='\033[1;35m'
-Cy='\033[1;36m'
-Wh='\033[0;37m'
+# VALIDATION FUNCTIONS
+def validate_ip(ip):
+    pattern = r'^(\d{1,3}\.){3}\d{1,3}$'
+    if re.match(pattern, ip):
+        parts = ip.split('.')
+        if all(0 <= int(part) <= 255 for part in parts):
+            return True
+    return False
 
-#BANNER TOOLS
-os.system('clear')
-stderr.writelines(f"""{Gr}
+def validate_phone(phone):
+    try:
+        parsed = phonenumbers.parse(phone, None)
+        return phonenumbers.is_valid_number(parsed)
+    except:
+        return False
 
+# TRACKING FUNCTIONS
+def track_ip():
+    os.system('clear')
+    time.sleep(1)
+    stderr.writelines(f"""{Colors.YELLOW}
                ___  __        __       
    | | |\ | __  |  |__)  /\  /  ` |__/ 
 \__/ | | \|     |  |  \ /~~\ \__, |  \ 
                                        
-
-                                                                    
-                                                                    
-
-
-    {Wh}[ + ]  C O D E   B Y  FARHAN-MUH-TASIM  [ + ]  
-        
-    {Wh}[ 1 ] {Gr}IP Tracker
-    {Wh}[ 2 ] {Gr}Show Your IP
-    {Wh}[ 3 ] {Gr}Phone Tracker
-    {Wh}[ 4 ] {Gr}Username Tracker
-    {Wh}[ 0 ] {Gr}Exit
+    {Colors.WHITE}[ + ]  IP TRACKER  [ + ]{Colors.RESET}
 """)
-
-input_user = input(f'\n   {Wh}@JIN~# {Gr}') #OPSI MENU
-
-
-if input_user == '1': #OPSI 1
-    os.system('clear')
-    time.sleep(1)
-    stderr.writelines(f"""{Wh}
-     .-.
-   .'   `.      {Wh}-----------------------------------
-   :0  0:       {Wh}|{Gr}JIN-TRACKER -IP - ADDRESS{Wh}|
-   : @@  `.     {Wh}|{Gr}@CODE BY FARHA-MUH -TASIM{Wh}|
-  :         ``. {Wh}-----------------------------------
- :             `.
-:  :         .   `.
-:   :          ` . `.
- `.. :            `. ``;
-    `:;             `:'
-       :              `.
-        `.              `.     .
-          `'`'`'`---..,___`;.-'
-    """)
-
-    try:
-        def IP_Track():
-            ip = input(f"{Wh}\n Enter IP target : {Gr}") #INPUT IP ADDRESS
-            print()
-            print(f' {Wh}============= {Gr}SHOW INFORMATION IP ADDRESS {Wh}=============')
-            req_api = requests.get(f"http://ipwho.is/{ip}") #API IPWHOIS.IS
-            ip_data = json.loads(req_api.text)
-            time.sleep(2)
-            print(f"{Wh}\n IP target       :{Gr}", ip)
-            print(f"{Wh} Type IP         :{Gr}", ip_data["type"])
-            print(f"{Wh} Country         :{Gr}", ip_data["country"])
-            print(f"{Wh} Country Code    :{Gr}", ip_data["country_code"])
-            print(f"{Wh} City            :{Gr}", ip_data["city"])
-            print(f"{Wh} Continent       :{Gr}", ip_data["continent"])
-            print(f"{Wh} Continent Code  :{Gr}", ip_data["continent_code"])
-            print(f"{Wh} Region          :{Gr}", ip_data["region"])
-            print(f"{Wh} Region Code     :{Gr}", ip_data["region_code"])
-            print(f"{Wh} Latitude        :{Gr}", ip_data["latitude"])
-            print(f"{Wh} Longitude       :{Gr}", ip_data["longitude"])
-            lat = int(ip_data['latitude'])
-            lon = int(ip_data['longitude'])
-            print(f"{Wh} Maps            :{Gr}",f"https://www.google.com/maps/@{lat},{lon},8z")
-            print(f"{Wh} EU              :{Gr}", ip_data["is_eu"])
-            print(f"{Wh} Postal          :{Gr}", ip_data["postal"])
-            print(f"{Wh} Calling Code    :{Gr}", ip_data["calling_code"])
-            print(f"{Wh} Capital         :{Gr}", ip_data["capital"])
-            print(f"{Wh} Borders         :{Gr}", ip_data["borders"])
-            print(f"{Wh} Country Flag    :{Gr}", ip_data["flag"]["emoji"])
-            print(f"{Wh} ASN             :{Gr}", ip_data["connection"]["asn"])
-            print(f"{Wh} ORG             :{Gr}", ip_data["connection"]["org"])
-            print(f"{Wh} ISP             :{Gr}", ip_data["connection"]["isp"])
-            print(f"{Wh} Domain          :{Gr}", ip_data["connection"]["domain"])
-            print(f"{Wh} ID              :{Gr}", ip_data["timezone"]["id"])
-            print(f"{Wh} ABBR            :{Gr}", ip_data["timezone"]["abbr"])
-            print(f"{Wh} DST             :{Gr}", ip_data["timezone"]["is_dst"])
-            print(f"{Wh} Offset          :{Gr}", ip_data["timezone"]["offset"])
-            print(f"{Wh} UTC             :{Gr}", ip_data["timezone"]["utc"])
-            print(f"{Wh} Current Time    :{Gr}", ip_data["timezone"]["current_time"])
-        if __name__ == '__main__':
-            IP_Track()
-    except KeyboardInterrupt:
-        print(f" {Wh}[{Ye}!{Wh}] {Ye}PROGRAM STOPPED...")
-
-elif input_user == '3': #OPSI 2
-    os.system('clear')
-    time.sleep(1)
-    stderr.writelines(f"""{Wh}
-     .-.
-   .'   `.          {Wh}----------------------------------------
-   :g g   :         {Wh}| {Gr}JIN - TRACKER - PHONE NUMBER {Wh}|
-   : o    `.        {Wh}| {Gr}@CODE BY FARHAN-MUH-TASIM    {Wh}|
-  :         ``.     {Wh}----------------------------------------
- :             `.
-:  :         .   `.
-:   :          ` . `.
- `.. :            `. ``;
-    `:;             `:'
-       :              `.
-        `.              `.     .
-          `'`'`'`---..,___`;.-'
-    """)
-
-    try:
-        def phoneGW():
-            User_phone = input(f"\n {Wh}Enter phone number target {Gr}Ex [+8801xxxxxxxxx] {Wh}: {Gr}") #INPUT NUMBER PHONE
-            default_region = "ID" #DEFAULT BANGLADESHI COUNTRY
-
-            parsed_number = phonenumbers.parse(User_phone, default_region) # VARIABLE PHONENUMBERS
-            region_code = phonenumbers.region_code_for_number(parsed_number)
-            jenis_provider = carrier.name_for_number(parsed_number, "en")
-            location = geocoder.description_for_number(parsed_number, "id")
-            is_valid_number = phonenumbers.is_valid_number(parsed_number)
-            is_possible_number = phonenumbers.is_possible_number(parsed_number)
-            formatted_number = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
-            formatted_number_for_mobile = phonenumbers.format_number_for_mobile_dialing(parsed_number, default_region, with_formatting=True)
-            number_type = phonenumbers.number_type(parsed_number)
-            timezone1 = timezone.time_zones_for_number(parsed_number)
-            timezoneF = ', '.join(timezone1)
-
-            print(f"\n {Wh}========== {Gr}SHOW INFORMATION PHONE NUMBERS {Wh}==========")
-            print(f"\n {Wh}Location             :{Gr} {location}")
-            print(f" {Wh}Region Code          :{Gr} {region_code}")
-            print(f" {Wh}Timezone             :{Gr} {timezoneF}")
-            print(f" {Wh}Operator             :{Gr} {jenis_provider}")
-            print(f" {Wh}Valid number         :{Gr} {is_valid_number}")
-            print(f" {Wh}Possible number      :{Gr} {is_possible_number}")
-            print(f" {Wh}International format :{Gr} {formatted_number}")
-            print(f" {Wh}Mobile format        :{Gr} {formatted_number_for_mobile}")
-            print(f" {Wh}Original number      :{Gr} {parsed_number.national_number}")
-            print(f" {Wh}E.164 format         :{Gr} {phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.E164)}")
-            print(f" {Wh}Country code         :{Gr} {parsed_number.country_code}")
-            print(f" {Wh}Local number         :{Gr} {parsed_number.national_number}")
-            if number_type == phonenumbers.PhoneNumberType.MOBILE:
-                print(f" {Wh}Type                 :{Gr} This is a mobile number")
-            elif number_type == phonenumbers.PhoneNumberType.FIXED_LINE:
-                print(f" {Wh}Type                 :{Gr} This is a fixed-line number")
-            else:
-                print(f" {Wh}Type                 :{Gr} This is another type of number")
-        if __name__ == '__main__':
-            phoneGW()
-    except KeyboardInterrupt:
-        print(f" {Wh}[{Ye}!{Wh}] {Ye}PROGRAM STOPPED...")
     
-elif input_user == '2': #OPSI 3
-    os.system('clear')
-    time.sleep(1)
-    stderr.writelines(f"""{Wh}
-     .-.
-   .'   `.          {Wh}----------------------------------------
-   :g g   :         {Wh}|  {Gr}JIN - SHOW YOUR IP ADDRESS  {Wh}|
-   : @    `.        {Wh}|  {Gr}@CODE BY FARHAN-MUH-TASIM   {Wh}|
-  :         ``.     {Wh}----------------------------------------
- :             `.
-:  :         .   `.
-:   :          ` . `.
- `.. :            `. ``;
-    `:;             `:'
-       :              `.
-        `.              `.     .
-          `'`'`'---..,___`;.-'
-""")
-
     try:
-        def showIP():
-            respone = requests.get('https://api.ipify.org/')
-            Show_IP = respone.text
+        ip = input(f"\n{Colors.WHITE} Enter IP target : {Colors.GREEN}")
+        
+        if not validate_ip(ip):
+            print(f"{Colors.RED} Invalid IP address format!{Colors.RESET}")
+            time.sleep(2)
+            return
+        
+        print(f'\n {Colors.WHITE}============= {Colors.GREEN}SHOW INFORMATION IP ADDRESS {Colors.WHITE}=============')
+        
+        try:
+            req_api = requests.get(f"http://ipwho.is/{ip}", timeout=10)
+            ip_data = json.loads(req_api.text)
             
-            print(f"\n {Wh}========== {Gr}SHOW INFORMATION YOUR IP {Wh}==========")
-            print(f"\n {Wh}[{Gr} + {Wh}] Your IP Adrress : {Gr}{Show_IP}")
-            print(f"\n {Wh}==============================================")
-        if __name__ == '__main__':
-            showIP()
+            if not ip_data.get("success", True):
+                print(f"{Colors.RED} Error: {ip_data.get('message', 'Unknown error')}{Colors.RESET}")
+                return
+                
+            time.sleep(1)
+            
+            info_items = [
+                ("IP target", ip),
+                ("Type IP", ip_data.get("type", "N/A")),
+                ("Country", ip_data.get("country", "N/A")),
+                ("Country Code", ip_data.get("country_code", "N/A")),
+                ("City", ip_data.get("city", "N/A")),
+                ("Continent", ip_data.get("continent", "N/A")),
+                ("Continent Code", ip_data.get("continent_code", "N/A")),
+                ("Region", ip_data.get("region", "N/A")),
+                ("Region Code", ip_data.get("region_code", "N/A")),
+                ("Latitude", ip_data.get("latitude", "N/A")),
+                ("Longitude", ip_data.get("longitude", "N/A")),
+                ("EU", ip_data.get("is_eu", "N/A")),
+                ("Postal", ip_data.get("postal", "N/A")),
+                ("Calling Code", ip_data.get("calling_code", "N/A")),
+                ("Capital", ip_data.get("capital", "N/A")),
+                ("Borders", ip_data.get("borders", "N/A")),
+                ("Country Flag", ip_data.get("flag", {}).get("emoji", "N/A")),
+                ("ASN", ip_data.get("connection", {}).get("asn", "N/A")),
+                ("ORG", ip_data.get("connection", {}).get("org", "N/A")),
+                ("ISP", ip_data.get("connection", {}).get("isp", "N/A")),
+                ("Domain", ip_data.get("connection", {}).get("domain", "N/A")),
+                ("Timezone ID", ip_data.get("timezone", {}).get("id", "N/A")),
+                ("Timezone ABBR", ip_data.get("timezone", {}).get("abbr", "N/A")),
+                ("DST", ip_data.get("timezone", {}).get("is_dst", "N/A")),
+                ("Offset", ip_data.get("timezone", {}).get("offset", "N/A")),
+                ("UTC", ip_data.get("timezone", {}).get("utc", "N/A")),
+                ("Current Time", ip_data.get("timezone", {}).get("current_time", "N/A"))
+            ]
+            
+            for key, value in info_items:
+                print(f"{Colors.WHITE} {key:<18} :{Colors.GREEN} {value}")
+            
+            # Generate maps link if coordinates are available
+            lat = ip_data.get("latitude")
+            lon = ip_data.get("longitude")
+            if lat and lon:
+                print(f"{Colors.WHITE} Maps{' ':<16} :{Colors.GREEN} https://www.google.com/maps/@{lat},{lon},8z")
+            
+        except requests.exceptions.RequestException as e:
+            print(f"{Colors.RED} Network error: {e}{Colors.RESET}")
+        except json.JSONDecodeError:
+            print(f"{Colors.RED} Error parsing API response{Colors.RESET}")
+            
     except KeyboardInterrupt:
-        print(f" {Wh}[{Ye}!{Wh}] {Ye}PROGRAM STOPPED...")
+        print(f"\n{Colors.YELLOW} Operation cancelled by user{Colors.RESET}")
 
-
-
-elif input_user == '4':
+def track_phone():
     os.system('clear')
     time.sleep(1)
-    stderr.writelines(f"""{Wh}
-     .-.
-   .'   `.          {Wh}----------------------------------------
-   :O O :           {Wh}|    {Gr}JIN - TRACKER USERNAME    {Wh}|
-   : o    `.        {Wh}|    {Gr}@CODE BY FARHAN-MUH-TASIM {Wh}|
-  :         ``.     {Wh}----------------------------------------
- :             `.
-:  :         .   `.
-:   :          ` . `.
- `.. :            `. ``;
-    `:;             `:'
-       :              `.
-        `.              `.     .
-          `'`'`'---..,___`;.-'
+    stderr.writelines(f"""{Colors.YELLOW}
+               ___  __        __       
+   | | |\ | __  |  |__)  /\  /  ` |__/ 
+\__/ | | \|     |  |  \ /~~\ \__, |  \ 
+                                       
+    {Colors.WHITE}[ + ]  PHONE TRACKER  [ + ]{Colors.RESET}
 """)
+    
     try:
-        def TrackLu(username):
-            results = {}
-            social_media = [
+        phone_number = input(f"\n{Colors.WHITE} Enter phone number target {Colors.GREEN}Ex [+8801xxxxxxxxx] {Colors.WHITE}: {Colors.GREEN}")
+        
+        if not validate_phone(phone_number):
+            print(f"{Colors.RED} Invalid phone number format!{Colors.RESET}")
+            time.sleep(2)
+            return
+        
+        default_region = "ID"
+        
+        try:
+            parsed_number = phonenumbers.parse(phone_number, default_region)
+            
+            if not phonenumbers.is_valid_number(parsed_number):
+                print(f"{Colors.RED} Invalid phone number!{Colors.RESET}")
+                return
+                
+            region_code = phonenumbers.region_code_for_number(parsed_number)
+            provider = carrier.name_for_number(parsed_number, "en")
+            location = geocoder.description_for_number(parsed_number, "id")
+            is_valid = phonenumbers.is_valid_number(parsed_number)
+            is_possible = phonenumbers.is_possible_number(parsed_number)
+            formatted_intl = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
+            formatted_mobile = phonenumbers.format_number_for_mobile_dialing(parsed_number, default_region, with_formatting=True)
+            number_type = phonenumbers.number_type(parsed_number)
+            timezones = timezone.time_zones_for_number(parsed_number)
+            timezone_str = ', '.join(timezones) if timezones else "N/A"
+            
+            print(f"\n {Colors.WHITE}========== {Colors.GREEN}SHOW INFORMATION PHONE NUMBERS {Colors.WHITE}==========")
+            
+            info_items = [
+                ("Location", location),
+                ("Region Code", region_code),
+                ("Timezone", timezone_str),
+                ("Operator", provider),
+                ("Valid number", is_valid),
+                ("Possible number", is_possible),
+                ("International format", formatted_intl),
+                ("Mobile format", formatted_mobile),
+                ("Original number", parsed_number.national_number),
+                ("E.164 format", phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.E164)),
+                ("Country code", parsed_number.country_code),
+                ("Local number", parsed_number.national_number)
+            ]
+            
+            for key, value in info_items:
+                print(f" {Colors.WHITE}{key:<22} :{Colors.GREEN} {value}")
+            
+            # Number type description
+            if number_type == phonenumbers.PhoneNumberType.MOBILE:
+                print(f" {Colors.WHITE}Type{' ':<20} :{Colors.GREEN} This is a mobile number")
+            elif number_type == phonenumbers.PhoneNumberType.FIXED_LINE:
+                print(f" {Colors.WHITE}Type{' ':<20} :{Colors.GREEN} This is a fixed-line number")
+            else:
+                print(f" {Colors.WHITE}Type{' ':<20} :{Colors.GREEN} This is another type of number")
+                
+        except Exception as e:
+            print(f"{Colors.RED} Error processing phone number: {e}{Colors.RESET}")
+            
+    except KeyboardInterrupt:
+        print(f"\n{Colors.YELLOW} Operation cancelled by user{Colors.RESET}")
+
+def show_my_ip():
+    os.system('clear')
+    time.sleep(1)
+    stderr.writelines(f"""{Colors.YELLOW}
+               ___  __        __       
+   | | |\ | __  |  |__)  /\  /  ` |__/ 
+\__/ | | \|     |  |  \ /~~\ \__, |  \ 
+                                       
+    {Colors.WHITE}[ + ]  SHOW MY IP  [ + ]{Colors.RESET}
+""")
+    
+    try:
+        print(f"\n {Colors.WHITE}========== {Colors.GREEN}SHOW INFORMATION YOUR IP {Colors.WHITE}==========")
+        
+        # Get public IP
+        try:
+            response = requests.get('https://api.ipify.org', timeout=5)
+            public_ip = response.text
+            print(f"\n {Colors.WHITE}[{Colors.GREEN} + {Colors.WHITE}] Your Public IP Address : {Colors.GREEN}{public_ip}")
+        except:
+            print(f"\n {Colors.WHITE}[{Colors.RED} ! {Colors.WHITE}] Could not retrieve public IP")
+            public_ip = "N/A"
+        
+        # Get local IP
+        try:
+            hostname = socket.gethostname()
+            local_ip = socket.gethostbyname(hostname)
+            print(f" {Colors.WHITE}[{Colors.GREEN} + {Colors.WHITE}] Your Local IP Address  : {Colors.GREEN}{local_ip}")
+        except:
+            print(f" {Colors.WHITE}[{Colors.RED} ! {Colors.WHITE}] Could not retrieve local IP")
+        
+        # Get additional IP information if public IP is available
+        if public_ip != "N/A":
+            try:
+                ip_info = requests.get(f"http://ipwho.is/{public_ip}", timeout=5).json()
+                if ip_info.get("success", False):
+                    print(f" {Colors.WHITE}[{Colors.GREEN} + {Colors.WHITE}] Your Approx. Location  : {Colors.GREEN}{ip_info.get('city', 'N/A')}, {ip_info.get('country', 'N/A')}")
+            except:
+                pass
+        
+        print(f"\n {Colors.WHITE}==============================================")
+        
+    except KeyboardInterrupt:
+        print(f"\n{Colors.YELLOW} Operation cancelled by user{Colors.RESET}")
+
+def track_username():
+    os.system('clear')
+    time.sleep(1)
+    stderr.writelines(f"""{Colors.YELLOW}
+               ___  __        __       
+   | | |\ | __  |  |__)  /\  /  ` |__/ 
+\__/ | | \|     |  |  \ /~~\ \__, |  \ 
+                                       
+    {Colors.WHITE}[ + ]  USERNAME TRACKER  [ + ]{Colors.RESET}
+""")
+    
+    try:
+        username = input(f"\n{Colors.WHITE} Enter Username : {Colors.GREEN}")
+        
+        if not username or len(username) < 3:
+            print(f"{Colors.RED} Username too short!{Colors.RESET}")
+            time.sleep(2)
+            return
+        
+        print(f"\n {Colors.WHITE}========== {Colors.GREEN}SHOW INFORMATION USERNAME {Colors.WHITE}==========")
+        print()
+        
+        social_media = [
             {"url": "https://www.facebook.com/{}", "name": "Facebook"},
             {"url": "https://www.twitter.com/{}", "name": "Twitter"},
             {"url": "https://www.instagram.com/{}", "name": "Instagram"},
@@ -241,36 +280,109 @@ elif input_user == '4':
             {"url": "https://www.medium.com/@{}", "name": "Medium"},
             {"url": "https://www.quora.com/profile/{}", "name": "Quora"},
             {"url": "https://www.flickr.com/people/{}", "name": "Flickr"},
-            {"url": "https://www.periscope.tv/{}", "name": "Periscope"},
             {"url": "https://www.twitch.tv/{}", "name": "Twitch"},
             {"url": "https://www.dribbble.com/{}", "name": "Dribbble"},
-            {"url": "https://www.stumbleupon.com/stumbler/{}", "name": "StumbleUpon"},
-            {"url": "https://www.ello.co/{}", "name": "Ello"},
-            {"url": "https://www.producthunt.com/@{}", "name": "Product Hunt"},
-            {"url": "https://www.snapchat.com/add/{}", "name": "Snapchat"},
-            {"url": "https://www.telegram.me/{}", "name": "Telegram"},
-            {"url": "https://www.weheartit.com/{}", "name": "We Heart It"}
-            ]
-
-            for site in social_media:
-                url = site['url'].format(username)
-                response = requests.get(url)
+            {"url": "https://www.telegram.me/{}", "name": "Telegram"}
+        ]
+        
+        found_count = 0
+        for site in social_media:
+            url = site['url'].format(username)
+            try:
+                response = requests.get(url, timeout=5, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'})
                 if response.status_code == 200:
-                    results[site['name']] = url
+                    print(f" {Colors.WHITE}[ {Colors.GREEN}+ {Colors.WHITE}] {site['name']}: {Colors.GREEN}{url}")
+                    found_count += 1
                 else:
-                    results[site['name']] = (f"{Ye}Username not found {Ye}!")
-            return results
-        username = input(f"\n {Wh}Enter Username : {Gr}")
-        print(f"\n {Wh}========== {Gr}SHOW INFORMATION USERNAME {Wh}==========")
-        print()
-        results = TrackLu(username)
-        for site, url in results.items():
-            print(f" {Wh}[ {Gr}+ {Wh}] {site} : {Gr}{url}")
+                    print(f" {Colors.WHITE}[ {Colors.RED}- {Colors.WHITE}] {site['name']}: {Colors.RED}Not found")
+            except:
+                print(f" {Colors.WHITE}[ {Colors.YELLOW}~ {Colors.WHITE}] {site['name']}: {Colors.YELLOW}Connection failed")
+        
+        print(f"\n {Colors.WHITE}Found {Colors.GREEN}{found_count} {Colors.WHITE}profiles for username {Colors.GREEN}{username}")
+        
     except KeyboardInterrupt:
-        print(f" {Wh}[{Ye}!{Wh}] {Ye}PROGRAM STOPPED-😑 create by FARHAN-MUH-TASIM...")
+        print(f"\n{Colors.YELLOW} Operation cancelled by user{Colors.RESET}")
 
-elif input_user == '0':
-    print(f"\n  {Wh}[{Ye}!{Wh}] {Ye}THANK'S FOR USING TOOL Create BY FARHAN-MUH-TASIM{Ye}JIN-TRACK !")
-else:
-    print(f" {Ye}Opss no option !") #FALSE
+# MAIN MENU
+def main_menu():
+    os.system('clear')
+    stderr.writelines(f"""{Colors.YELLOW}
+               ___  __        __       
+   | | |\ | __  |  |__)  /\  /  ` |__/ 
+\__/ | | \|     |  |  \ /~~\ \__, |  \ 
+                                       
+    {Colors.WHITE}[ + ]  CODE BY FARHAN-MUH-TASIM  [ + ]{Colors.RESET}
+        
+    {Colors.WHITE}[ 1 ] {Colors.GREEN}IP Tracker
+    {Colors.WHITE}[ 2 ] {Colors.GREEN}Show Your IP
+    {Colors.WHITE}[ 3 ] {Colors.GREEN}Phone Tracker
+    {Colors.WHITE}[ 4 ] {Colors.GREEN}Username Tracker
+    {Colors.WHITE}[ 0 ] {Colors.GREEN}Exit
+    {Colors.WHITE}[ * ] {Colors.GREEN}About
+""")
 
+    try:
+        choice = input(f'\n   {Colors.WHITE}@JIN~# {Colors.GREEN}')
+        
+        if choice == '1':
+            track_ip()
+        elif choice == '2':
+            show_my_ip()
+        elif choice == '3':
+            track_phone()
+        elif choice == '4':
+            track_username()
+        elif choice == '0':
+            print(f"\n  {Colors.WHITE}[{Colors.YELLOW}!{Colors.WHITE}] {Colors.YELLOW}THANK'S FOR USING TOOL Create BY FARHAN-MUH-TASIM JIN-TRACK!{Colors.RESET}")
+            sys.exit(0)
+        elif choice == '*':
+            show_about()
+        else:
+            print(f" {Colors.YELLOW}Invalid option! Please try again.{Colors.RESET}")
+            time.sleep(2)
+        
+        input(f"\n{Colors.WHITE}Press Enter to return to main menu...{Colors.RESET}")
+        main_menu()
+        
+    except KeyboardInterrupt:
+        print(f"\n{Colors.YELLOW} Exiting... Thank you for using JIN-TRACKER!{Colors.RESET}")
+        sys.exit(0)
+
+def show_about():
+    os.system('clear')
+    print(f"""
+{Colors.YELLOW}
+               ___  __        __       
+   | | |\ | __  |  |__)  /\  /  ` |__/ 
+\__/ | | \|     |  |  \ /~~\ \__, |  \ 
+                                       
+{Colors.RESET}
+{Colors.WHITE}JIN-TRACKER - Multi-purpose OSINT Tool
+{Colors.GREEN}Created by: FARHAN-MUH-TASIM
+{Colors.YELLOW}Version: 2.0 (Improved)
+
+{Colors.WHITE}Features:
+{Colors.GREEN}• IP Address Tracking
+{Colors.GREEN}• Phone Number Information
+{Colors.GREEN}• Username Search across platforms
+{Colors.GREEN}• Show Your IP Information
+
+{Colors.YELLOW}Note: This tool is for educational purposes only.
+Always get proper authorization before scanning any target.
+
+{Colors.WHITE}Inspired by Islamic teachings:
+"O you who believe! Do not consume each other's wealth 
+in a false way," (QS. An Nisaa': 29). 
+Rasulullah SAW also prohibited his people from taking 
+other people's rights without permission.
+{Colors.RESET}
+""")
+    input(f"\n{Colors.WHITE}Press Enter to return to main menu...{Colors.RESET}")
+    main_menu()
+
+# ENTRY POINT
+if __name__ == '__main__':
+    try:
+        main_menu()
+    except KeyboardInterrupt:
+        print(f"\n{Colors.YELLOW} Exiting... Thank you for using JIN-TRACKER!{Colors.RESET}")
